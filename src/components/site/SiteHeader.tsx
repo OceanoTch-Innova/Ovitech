@@ -31,8 +31,8 @@ export function SiteHeader() {
         <nav className="desktop-nav" aria-label="Navegación principal">
           {primaryNavigation.map((item) => (
             <div className="desktop-nav__item" key={item.href}>
-              <Link href={item.href} className={pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`)) ? "is-active" : ""}>{item.label}{item.children && <Icon name="chevron" size={14} />}</Link>
-              {item.children && (
+              <Link href={item.href} className={pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`)) ? "is-active" : ""}>{item.label}{"children" in item && item.children && <Icon name="chevron" size={14} />}</Link>
+              {"children" in item && item.children && (
                 <div className="nav-menu">
                   {item.children.map((child) => <Link key={child.href} href={child.href}><strong>{child.label}</strong>{child.description && <span>{child.description}</span>}<Icon name="arrowUpRight" size={14} /></Link>)}
                 </div>
@@ -50,7 +50,7 @@ export function SiteHeader() {
           {primaryNavigation.map((item) => (
             <div key={item.href} className="mobile-nav__group">
               <Link href={item.href}>{item.label}<Icon name="arrowUpRight" size={16} /></Link>
-              {item.children && <div>{item.children.map((child) => <Link key={child.href} href={child.href}>{child.label}</Link>)}</div>}
+              {"children" in item && item.children && <div>{item.children.map((child) => <Link key={child.href} href={child.href}>{child.label}</Link>)}</div>}
             </div>
           ))}
           <Link href={headerCta.href} className="button button--primary">{headerCta.label}<Icon name="arrow" size={16} /></Link>
