@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "preview": "opennextjs-cloudflare build --config=wrangler.jsonc && opennextjs-cloudflare preview --config=wrangler.jsonc",
+    "deploy": "opennextjs-cloudflare build --config=wrangler.jsonc && opennextjs-cloudflare deploy --config=wrangler.jsonc",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "1.14.0",
     "next": "15.5.4",
     "nodemailer": "6.10.1",
     "react": "19.1.1",
@@ -20,6 +23,7 @@
     "@types/nodemailer": "6.4.17",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "wrangler": "4.141.0"
   }
 }
